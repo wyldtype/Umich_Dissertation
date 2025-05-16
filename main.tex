@@ -1,9 +1,9 @@
-% University of Michigan Dissertation LaTeX Template for 2023
-% Created by John Meluso and Shreyas Kousik
-% 9 Jul 2020
+% University of Michigan Dissertation LaTeX Template for 2025
+% Updated by John Meluso with Claude 3.7 Sonnet, based on work by John Meluso and Shreyas Kousik
+% May 16, 2025
 
-% Use the University of Michigan thesis class.
-\documentclass[thesis]{thesis-umich}
+% Use the University of Michigan dissertation class.
+\documentclass{dissertation}
 \input{packages}
 
 %--- Set the font styles -----
@@ -61,18 +61,14 @@
 % Frontispiece
 \frontispiece{\includegraphics[width=4in]{front_materials/frontispiece.png}}
 
-% Default style for front pages
-\frontpagestyle{7} % 7 is preferred by Rackham, but should be set individually for each front page
+% Dedication
+\dedication{\input{front_materials/dedication}}
 
-% Dedication (the input [7] determines the style -- 7 is Rackham's preferred style)
-% \hidededication{%
-\dedication[7]{\input{front_materials/dedication}}
-
-% Acknowledgments (the input [7] determines the style -- 7 is Rackham's preferred style)
-\acknowledgments[7]{\input{front_materials/acknowledgments}}
+% Acknowledgments
+\acknowledgments{\input{front_materials/acknowledgments}}
 
 % Preface
-\preface[7]{\input{front_materials/preface}}
+\preface{\input{front_materials/preface}}
 
 % Committee
 \committee{ %
@@ -115,6 +111,14 @@ Professor Fourth Name in Alphabetical Order
 \input{front_materials/abstract}
 }
 %\hideabstractpagenumber
+
+% SPACING CONFIGURATION
+% Uncomment one of these lines to change the document spacing:
+%\singlespacing    % For single spacing
+%\onehalfspacing   % For 1.5 spacing (class default)
+%\doublespacing    % For double spacing 
+%\setstretch{1.8}  % For custom spacing (1.8 times normal in this example)
+% Note: Rackham requires at least 1.5 spacing for the main text.
 
 %% DOCUMENT AREA
 \begin{document}
