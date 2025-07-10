@@ -1,0 +1,15 @@
+*.pdf
+*.log
+*.out
+*.bbl
+*.blg
+*.loapp
+*.lop
+*.lot
+*.lof
+*.toc
+*.aux
+*.cls
+*.md
+*.synctex.gz
+*.png
