@@ -68,7 +68,7 @@
 \acknowledgments{\input{front_materials/acknowledgments}}
 
 % Preface
-\preface{\input{front_materials/preface}}
+%\preface{\input{front_materials/preface}}
 
 % Committee
 \committee{ %
@@ -86,8 +86,7 @@ Professor Jianzi Zhang \\
 % Definition of any acronyms used.
 % To add an acronym, add an \acro{}{} command on a new line within the \acronyms{} command. For \acro, field 1 is the acronym and field 2 is the corresponding expression. For example: \acro{TLA}{Three Letter Acronym}.
 \acronyms{
-    \acro{TLA}{Three Letter Acronym}
-    \acro{SOA}{Some Other Acronym}
+    \acro{TF}{Transcription Factor}
 }
 
 % Definition of any symbols used.
@@ -123,9 +122,11 @@ Professor Jianzi Zhang \\
 %% DOCUMENT AREA
 \begin{document}
 
-\input{chapters/example_chapter_01}
+\input{chapters/intro}
+\input{chapters/chapter_plasticity}
+\input{chapters/chapter_networks}
 % Place your additional chapters here using the \input{} command
-\input{chapters/example_chapter_99}
+\input{chapters/conclusion}
 
 % Appendices
 \appendix
@@ -135,6 +136,6 @@ Professor Jianzi Zhang \\
 \bibliographystyle{plain}
 
 % Give this command the relative path to the .bib file.
-\bibliography{references.bib}
+\bibliography{references}
 
 \end{document}
