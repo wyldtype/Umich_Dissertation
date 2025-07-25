@@ -28,6 +28,147 @@ Here we evaluate the effects of 46 TF knockouts in \textit{S. cerevisiae}, \text
 \section{Results}
 %\label{sec:resultsanddiscussion}
 
-To establish a frame of reference for our TF knockout comparisons, we first characterized the low nitrogen response in wildtype \textit{S. cerevisiae}, \textit{S. paradoxus}, and their F1 hybrid.
+\subsection{Characterizing the wildtype Low Nitrogen response in all three genetic backgrounds}
 
-\subsection{}
+To characterized the Low Nitrogen gene expression response in our three genetic backgrounds, we analyzed 3' tag-seq transcriptomic data in wildtype \textit{S. cerevisiae} (Scer), \textit{S. paradoxus} (Spar), and their F1 hybrid (Hyb) during the transition from a rich growth media to a nitrogen-poor growth media. These data were generated in Krieger et al. 2020 \cite{Krieger2020}, and include mRNA libraries from three timepoints in each of the three genetic backgrounds. The first timepoint was sampled after 6 hours of growth in rich media and immediately prior to transfer to low nitrogen media. As timepoints are named in relation to the nitrogen stress condition, this first timepoint is called ``0 hours, YPD." The second timepoint was collected after 1 hour of growth in the low nitrogen media (``1 hour, LowN") and the third after 16 hours of growth (``16 hours, LowN"). For each timepoint in each wildtype genetic background, the number of replicate samples ranged from 27 (Scer 1 hour, LowN) to 35 (Hyb any timepoint).
+
+We first asked which genes responded to the Low Nitrogen environment with significant changes in expression. We considered a gene to respond to Low Nitrogen if 95\% of its counts at the second and/or third timepoint were not within 95\% of the count distribution established in the first timepoint. Depending on which timepoints this non-overlapping expression occurred at, we assigned each gene to a different response category (Fig \ref{fig:wt}A). If no pair of timepoints has less than 5\% overlap in its counts, the gene is assigned to the ``none" category. If the 1 hour timepoint has non-overlapping expression with the 0 hour timepoint, the gene is assigned to the ``early" category.  If the 16 hour timepoint has non-overlapping expression with the 1 hour timepoint, the gene is assigned to the ``late" category. If a gene can be considered both an ``early" and a ``late" responder, it is assigned to the ``both" category. Finally, if the 16 hour timepoint has non-overlapping expression with the 0 hour timepoint, but the gene cannot be considered an ``early" or ``late" responder, the gene is assigned to the ``gradual" category.
+
+\begin{figure}
+    \centering
+    \fbox{\includegraphics[width=0.8\textwidth]{chapters/figures/Networks/Fig_WT.png}}
+    \caption{\textbf{Wildtype responses to Low Nitrogen in three genetic backgrounds.} A) Possible Low Nitrogen response categories for an example gene. Black points and boxplots represent the wildtype expression counts for a hypothetical gene. Brackets with a ``*" indicate pairs of timepoints with 95\% non-overlaping expression counts (the point distributions are not drawn to reflect this). Brackets with a ``n.s." indicate pairs of timepoints with $>$5\% overlapping expression counts. B) Number of genes in each response category in each genetic background. C) Venn diagram of which responsive genes (any response category) are common to multiple genetic backgrounds. D) Number of genes in each response category for only the genes that are responsive in all three genetic backgrounds.}
+    \label{fig:wt}
+\end{figure}
+
+As expected, we found that the most genes in each genetic background belonged to the ``none" category and the fewest belonged to the ``both" category (Fig \ref{fig:wt}B). The ``gradual'' category was the second most prevalent in all three backgrounds. The other three response categories varied slightly in their proportions between genetic backgrounds. Specifically, Scer had more genes in the ``early'' category, while Spar had more genes in the ``late'' category. Hyb had the most responsive genes overall, but the proportions more reflected Scer's early response rather than Spar's late response.
+
+We next asked whether the same genes were responding to Low Nitrogen in all three genetic backgrounds. We considered genes to be shared between backgrounds if a one-to-one ortholog was found to be responsive in both backgrounds, regardless of the response category it belonged to. We found that 32\% of responsive genes (396 genes) were responsive in all three genetic backgrounds, which was the largest category in the Venn diagram (Fig \ref{fig:wt}C). By far the smallest category were genes that were responsive in both Scer and Spar but not Hyb, which comprised only 8 genes. Significant numbers of genes were responsive in only one genetic background (58 in Spar, 131 is Scer, and 230 in Hyb), and significant numbers of genes were responsive in Hyb and one parental species (128 shared with Spar, 287 shared with Scer). The response categories of the 396 conserved responsive genes reflected those of the entire genome---with Scer and Hyb having more ``early" responders and Spar having more ``late" (Fig \ref{fig:wt}D).
+
+\subsection{Genes that respond to Low Nitrogen in all three genetic backgrounds have the strongest enrichment of gene ontology terms}
+
+We reasoned that genes with conserved responses in all three backgrounds could be more likely to be involved in biological processes related to Low Nitrogen. To test this, we looked for Gene Ontology (GOslim) enrichment among genes with conserved reponsiveness and compared these to responsive genes in the 5 other categories of the Venn diagram. We found that the 396 conserved responsive genes had the most GO terms with significant enrichment, with 71\% of genes belonging to at least one of the 25 significant GO terms (Fig \ref{fig:GO}). The other two categories with appreciable GO term enrichment were genes that responded in both Hyb and Scer (17 terms, 50\% of genes belonging to at least one term) and genes that responded only in Hyb (10 terms, 42\% of genes belonging to at least one term). Categories including Spar had the least GO term enrichment (2 for Hyb and Spar, 3 for Spar only). We found no GO term enrichment for genes shared between parents but not hybrid. but for reference the 8 genes in this category are: Cha1, Rad59, Snq2, Hmf1, Vhr2, Erg25, Src1, and Mlo1.
+\begin{figure}
+    \centering
+    \fbox{\includegraphics[width=\textwidth]{chapters/figures/Networks/Fig_GOterm.png}}
+    \caption{\textbf{Genes that are responsive to Low Nitrogen in all three genetic backgrounds have the most gene ontology enrichment} A) Same Venn diagram as in Fig \ref{fig:wt}C now pseudo-colored by category. B) Number of GO terms with significant enrichment for genes in each of the Venn diagram categories. Above each bar is the number of genes belonging to at least one of those terms as a fraction of total number of genes in the category.}
+    \label{fig:GO}
+\end{figure}
+
+We next asked what GO terms were associated with conserved, Scer-Hyb, or Hyb responses. For brevity, we excluded GO terms that related to ribosome biogenesis (14 terms and 91 genes in conserved, 14 terms and 54 genes in Scer-Hyb, and 9 terms and 35 genes in Hyb). The remaining GO terms are presented in table \ref{tab:goslim_conserved} (conserved), table \ref{tab:goslim_ScerHyb} (Scer-Hyb), and table \ref{tab:goslim_Hyb} (Hyb) below. We found enrichment in expected categories related to metabolic processes of nitrogen-containing compounds, but also in less-expected categories, such as cytoplasmic translation, respiratory chain complexes, and 7/21 components of the eisosome. Full GO term results are available in supplementary tables in Appendix \ref{chpt:networkGO}.
+
+
+% latex table generated in R 4.5.0 by xtable 1.8-4 package
+% Tue Jul 22 16:43:23 2025
+\begin{table}[H]
+\centering
+\begin{tabular}{rlrrl}
+  \hline
+ & GOslim term & group count & genome count & exact pval \\ 
+  \hline
+1 & amino acid metabolic process & 43 & 174 & 5.74e-13 \\ 
+  2 & amino acid transport & 17 & 43 & 3.083e-09 \\ 
+  3 & biosynthetic process & 144 & 1011 & 1.181e-16 \\ 
+  4 & carbohydrate metabolic process & 19 & 117 & 0.0008668 \\ 
+  5 & cytoplasmic translation & 56 & 97 & 4.808e-39 \\ 
+  6 & eisosome & 7 & 21 & 0.0005381 \\ 
+  7 & oligosaccharide metabolic process & 6 & 17 & 0.0009671 \\ 
+  8 & oxidoreductase activity & 53 & 287 & 2.218e-10 \\ 
+  9 & small molecule metabolic process & 89 & 581 & 6.317e-12 \\ 
+  10 & structural molecule activity & 69 & 268 & 2.026e-21 \\ 
+  11 & sulfur compound metabolic process & 17 & 87 & 0.000172 \\ 
+  12 & translation & 56 & 194 & 4.939e-20 \\ 
+  13 & transmembrane transporter activity & 43 & 312 & 4.394e-05 \\ 
+  14 & vacuole & 36 & 254 & 0.0001036 \\ 
+   \hline
+\end{tabular}
+\caption{GOslim terms not related to ribosome biogenesis that were significantly associated with genes that responded to Low Nitrogen in all three backgrounds}
+    \label{tab:goslim_conserved}
+\end{table}
+
+% latex table generated in R 4.5.0 by xtable 1.8-4 package
+% Tue Jul 22 16:43:33 2025
+\begin{table}[H]
+\centering
+\begin{tabular}{rlrrl}
+  \hline
+ & GOslim term & group count & genome count & exact pval \\
+  \hline
+1 & cellular respiration & 13 & 59 & 1.018e-05 \\ 
+  2 & cytoplasmic stress granule & 16 & 94 & 3.22e-05 \\ 
+  3 & cytoplasmic translation & 21 & 97 & 2.585e-08 \\ 
+  4 & generation of precursor metabolites and energy & 23 & 118 & 4.528e-08 \\ 
+  5 & mitochondrial respiratory chain complex III & 7 & 9 & 3.898e-08 \\ 
+  6 & mitochondrial respiratory chain complex IV & 5 & 10 & 8.624e-05 \\ 
+  7 & multi-eIF complex & 5 & 10 & 8.624e-05 \\ 
+  8 & nucleolus & 25 & 225 & 0.0003823 \\ 
+  9 & response to starvation & 7 & 28 & 0.0005291 \\ 
+  10 & RNA polymerase I complex & 5 & 14 & 0.0005732 \\ 
+  11 & small molecule metabolic process & 49 & 581 & 0.0008408 \\ 
+   \hline
+\end{tabular}
+\caption{GOslim terms not related to ribosome biogenesis that were significantly associated with genes that responded to Low Nitrogen in Scer and Hyb but not Spar}
+    \label{tab:goslim_ScerHyb}
+\end{table}
+
+% latex table generated in R 4.5.0 by xtable 1.8-4 package
+% Tue Jul 22 17:28:03 2025
+\begin{table}[H]
+\centering
+\begin{tabular}{rlrrl}
+  \hline
+ & GOslim term & group count & genome count & exact pval \\
+  \hline
+1 & generation of precursor metabolites and energy & 16 & 118 & 3.796e-05 \\ 
+  2 & \thead{nucleobase-containing small molecule metabolic process} & 19 & 176 & 0.0001753 \\ 
+  3 & nucleolus & 28 & 225 & 2.711e-07 \\ 
+  4 & oxidoreductase activity & 25 & 287 & 0.0005341 \\ 
+  5 & small molecule metabolic process & 43 & 581 & 0.0002391 \\ 
+   \hline
+\end{tabular}
+\caption{GOslim terms not related to ribosome biogenesis that were significantly associated with genes that responded to Low Nitrogen only in Hyb}
+    \label{tab:goslim_Hyb}
+\end{table}
+
+\subsection{Parental gene expression patterns show strong dominance in the hybrid}
+
+Thus far the Low Nitrogen response in Hyb has been seen to more closely resemble the response in Scer rather than Spar. This is evidenced both in terms of how many genes respond early versus late to Low Nitrogen and how many of those genes are common to both Scer and Hyb. We therefore asked if the expression patterns of individual genes would also more closely resemble Scer expression versus Spar. To calculate the similarity of the expression pattern of each gene, we first calculated the average expression of the gene among replicates within a genetic background at each timepoint to produce an expression vector of length 3. We then took the correlation of pairs of these expression vectors from Hyb and either parent---cor(Scer, Hyb) and cor(Spar, Hyb)---as our measure of expression pattern similarity.
+
+\begin{SCfigure}
+    \caption{\textbf{Hybrid expression is strongly correlated with at least one parental species}. A) Correlation of hybrid expression vector (averaged expression among replicates at each timepoint) with the expression vectors of each parent. Only genes that responded to Low Nitrogen in at least one background are included. B) Same correlations as A, now including genes that were not considered responsive to Low Nitrogen but excluding genes that were highly correlated with both parents (cor(Scer, Hyb) $>$ 0.8 and/or cor(Spar, Hyb) $>$ 0.8.}
+    \fbox{\includegraphics[width=0.7\textwidth]{chapters/figures/Networks/Fig_HybridDominance.png}}
+    \label{fig:dominance}
+\end{SCfigure}
+
+We found that genes that responded to Low Nitrogen had strong expression correlation ($>$ 0.8) between Hyb and one or both parents (Fig \ref{fig:dominance}A). We surprisingly did not find a tendency for more genes in Hyb to be correlated with Scer versus Spar. We instead see a relatively even split of genes correlated with either parent. Four genes were marked exceptions to this tendency: Exg2, Get3, YOR338W, and Ura4 all had hybrid expression that was uncorrelated with either parent (labeled in Fig \ref{fig:dominance}A). 
+
+We next asked if this pattern of hybrid expression being correlated with at least one parent was also seen when we included genes that weren't Low Nitrogen responsive. For plotting, we excluded about half (2918/5359, 54\%) of genes that had strong expression correlation ($>$ 0.8) between Hyb and both parents, as these genes showed minimal expression pattern variation between genetic backgrounds. The remaining 2421 genes showed a similar distribution as the genes responsive to Low Nitrogen---genes tended to be strongly correlated between the hybrid and one parent (Fig \ref{fig:dominance}B). The pattern was not as stark, however, as 679/5359 (13\%) of genes had hybrid expression that was lowly correlated with both parents (cor(Scer, Hyb) $<$ 0.8 and cor(Spar, Hyb) $<$ 0.8), when previously only 10/1238 (0.8\%) of the Low Nitrogen responsive genes were in this category.
+
+\subsection{Transcription factor knockout lines do not have the same effect on gene expression between genetic backgrounds}
+
+We next investigated whether this knowledge of the wildtype Low Nitrogen response would give us new insights into the widespread pleiotropic expression effects of TF knockouts. To address this, we estimated the effects on gene expression of our 46 TF knockout lines in each genetic background. We used DESeq2 \cite{Love2014} to identify genes with significant changes in expression in each knockout line relative to wildtype. Each knockout line was measured in two replicates, which gives us much lower power to detect expression differences that between wildtype samples, which each have about 30 replicates. To assess whether this imbalance in replicates led to false positives, we fit two additional DESeq2 models to 2 sets of 46 ``sham'' knockouts. These sham knockout lines each consisted of 2 replicates randomly sampled from wildtype gene counts.
+
+We detected substantially more differentially expressed genes in the TF knockout lines versus the sham controls (Fig \ref{fig:tfdel}A). As previously reported \cite{Liu2024, Li2025}, we found that the majority of TF knockout effects were not shared between genetic backgrounds (Fig \ref{fig:tfdel}B). We considered an effect to be shared if the same gene changed expression significantly in the same TF knockout line in two or more backgrounds. Even with the least stringent definition of sharing---the affected gene could change expression in different directions and at different timepoints and still be considered shared---71\% of effects were unique to a single genetic background. Also as previously reported, the different TF knockouts within the same genetic background tended to affect different sets of genes, as most genes were only affected by 0, 1, or 2 TF knockouts (\cite{Liu2024} \hl{sees this a bit but there's probably an earlier yeast knockout panel paper, as we only need to look at Scer for this conclusion}) (\ref{fig:tfdel}C).
+
+\begin{figure}
+    \fbox{\includegraphics[width=0.9\textwidth]{chapters/figures/Networks/Fig_TFdel.png}}
+     \caption{\textbf{Differentially expressed genes in TF knockouts relative to WT in each of the three backgrounds}. A)}
+    \label{fig:tfdel}
+\end{figure}
+
+\subsection{TF knockouts have widespread allele-specific effects in the F1 hybrid background}
+
+To be comparable with the parental samples, we have thus far looked at gene expression in Hyb as the sum of both its Scer and Spar alleleic expression. To assess if Hyb alleles tend to display different responses in the same TF knockout line, we asked whether DESeq2 models that were only given hybrid counts for the Scer allele (Hyc) or the Spar allele (Hyp) tended to detect the same genes as being differentially expressed. We found that when one hybrid allele was detected as differentially expressed in a TF knockout line, the other allele was also affected in 27\% of cases (Fig \ref{fig:alleleic}A). This lack of similarity between alleles was also reflected in the magnitude and direction of fold changes, as we found very little correlation between alleles among our 5359 total genes ($R^2$ = 0.08). This low correlation was only marginally improved when we filtered for the cases where at least Hyc or Hyp was detected as significant ($R^2$ = 0.10).
+
+\begin{figure}
+    \fbox{\includegraphics[width=\textwidth]{chapters/figures/Networks/Fig_Alleleic.png}}
+     \caption{\textbf{Hybrid alleles tend to respond differently in the same TF knockout line}. A) Number of differentially expressed alleles}
+    \label{fig:alleleic}
+\end{figure}
+
+To investigate why so so many TF knockout effects were allele-specific, we looked more closely at the two subsets of genes with allele non-specific or allele-specific effects. In the 27\% of cases where both alleles were detected as differentially expressed in the same TF knockout, the fold changes tended to be in the same direction---either both positive or both negative log2 fold changes (Fig \ref{fig:alleleic}B, example gene in \ref{fig:alleleic}B'). A distinct subset of genes in this category, however, had log2 fold changes in opposite directions (red points in Fig \ref{fig:alleleic}B, example gene in \ref{fig:alleleic}B''). In the remaining 73\% of cases where only one allele was significant, In both subsets, we noticed that the direction of response tended to be negative (Fig \ref{fig:alleleic}B and C, marginal distributions). That is, the affected gene tended to have lower expression in the TF knockout line versus wildtype. \hl{This negative bias was not seen in the parents}.
+
+\subsection{Transcription factor knockout lines bias expression TOWARDS/AWAY FROM dominant pattern}
+
+\blindtext
+

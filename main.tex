@@ -2,9 +2,15 @@
 % Updated by John Meluso with Claude 3.7 Sonnet, based on work by John Meluso and Shreyas Kousik
 % May 16, 2025
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% ANNA %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% If you get Error: File ended while scanning use of \@@BOOKMARK, delete the main.out file!
+
 % Use the University of Michigan dissertation class.
 \documentclass{dissertation}
 \input{packages}
+\graphicspath{ {chapters/figures/} }
 
 %--- Set the font styles -----
 % As of this writing, Rackham does not have strict font requirements, but they
@@ -71,22 +77,26 @@
 %\preface{\input{front_materials/preface}}
 
 % Committee
-\committee{ %
+\committee{
 Professor Trisha Wittkopp, Chair \\
 Professor Timothy James \\
 Professor Jacob Mueller \\
-Professor Jianzi Zhang \\
+Professor Jianzi Zhang
 }
 
 % Chair must be entered separately for formatting reasons.
 \chair{Professor Trisha Wittkopp}
 \cochair{Jianzi Zhang}
 
-
 % Definition of any acronyms used.
 % To add an acronym, add an \acro{}{} command on a new line within the \acronyms{} command. For \acro, field 1 is the acronym and field 2 is the corresponding expression. For example: \acro{TLA}{Three Letter Acronym}.
 \acronyms{
     \acro{TF}{Transcription Factor}
+    \acro{Scer}{\textit{Saccharomyces cerevisiae}}
+    \acro{Spar}{\textit{Saccharomyces paradoxus}}
+    \acro{Hyb}{\textit{Saccharomyces cerevisiae} x \textit{Saccharomyces paradoxus} F1 hybrid}
+    \acro{Hyc}{F1 hybrid, \textit{S. cerevisiae} allele}
+    \acro{Hyp}{F1 hybrid, \textit{S. paradoxus} allele}
 }
 
 % Definition of any symbols used.
@@ -98,12 +108,11 @@ Professor Jianzi Zhang \\
 
 % Commands to hide or show lists of figures, tables, etc.
 % To hide a list, change the word "show" in the command to "hide".
-\showlistoftables
-\showlistofprograms
+\hidelistoftables
+\hidelistofprograms
 \showlistofappendices
 \showlistofacronyms
 \hidelistofsymbols
-
 
 % Some abstract text
 \abstract{
@@ -130,10 +139,9 @@ Professor Jianzi Zhang \\
 
 % Appendices
 \appendix
-\input{appendices/example_appendix_01}
-\input{appendices/example_appendix_02}
+\input{appendices/appendix_NetworksGOtables}
 
-\bibliographystyle{plain}
+\bibliographystyle{unsrt}
 
 % Give this command the relative path to the .bib file.
 \bibliography{references}
