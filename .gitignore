@@ -2,6 +2,7 @@ chapters/figures/
 *.pdf
 *.log
 *.out
+*.lop
 *.bbl
 *.blg
 *.loapp
