@@ -182,3 +182,26 @@ Among genes that showed low wildtype expression correlation between parental ort
 
 Lastly, we observed that while TF deletions affected different genes in different genetic backgrounds, the effects had a common theme. Specifically, TF knockout lines exhibited less variation in expression across timepoints. This was most notable at the timepoint where the affected gene had its maximum expression. At this maximum, TF knockouts overwhelmingly biased the gene towards lower expression that wildtype. Many questions remain as to why this reduction in variation was observed in general across so many TF knockouts. One possibility is that any reduction in regulatory complexity---in this case, yeasts possessing one fewer regulator than wildtype---will tend to reduce the range of expression levels possible among genes. As the minimum expression level of any gene is 0, the lower bound of this range is already restricted. The reduction in expression range would therefore be more likely to be observed on the upper bound. Many questions remain as to whether this reduction of variability is seen in other environmental responses, other genetic backgrounds, or if it scales with the extent of decline in regulatory complexity (i.e. deletions of increasing numbers of regulators).
 
+\section{Data Availability}
+
+Raw RNA sequencing data from Krieger et al. 2020 are available at NCBI BioProject database (https://www.ncbi.nlm.nih.gov/bioproject/) under accession number PRJNA592756. Code used for analyses in this chapter is available at https://wyldtype.github.io/Networks/.
+
+\section{Methods}
+
+\subsection{Mapping and quantifying transcriptome data}
+
+Batch scripts used to align reads in this section are performed in the script $\texttt{cut\_map\_count\_tagseq.sbat}$, available in the Chapter \ref{chpt:plasticity} github repository (https://github.com/wyldtype/Redhuis2025). STAR v2.7.11b was used for both aligning and quantification. Prior to aligning, STAR was run in --runMode genomeGenerate with the following parameters: --genomeSAindexNbases 11 --sjdbGTFfeatureExon gene --sjdbGTFtagExonParentGene Name to generate reference genome indices.
+
+Genome assemblies and gene annotations for \textit{S. cerevisiae} (S288C) and \textit{S. paradoxus} (CBS432) were downloaded from yjx1217.github.io/Yeast\_PacBio\_2016/data/ \cite{Yue2017}. Genome assemblies for \textit{S. kudriavzevii} (GCA\_947243775.1) and \textit{S. uvarum} (GCA\_027557585.1) were downloaded from NCBI. The RNAseq data from Fay et al. 2023 was pooled with samples including \textit{S. kudriavzevii} and \textit{S. uvarum} and therefore needed to be mapped to a concatenated genome that included all four species. Only reads for the \textit{S. cerevisiae} and \textit{S. paradoxus} alleles were quantified and included in this study.
+
+50bp 3' tag-seq reads from Krieger et al. 2020 were mapped to the \textit{S. cerevisiae} and \textit{S. paradoxus} concatenated genome using STAR with the following parameters: --alignEndsType EndToEnd --outFilterScoreMinOverLread 0  --outFilterMatchNminOverLread 0 --outFilterMismatchNmax 4  --scoreGap -10. STAR was run in --quantMode GeneCounts to concurrently count reads within 500 base pairs of the transcription end site ($\pm$500 TES). An average of 60\%, or 1 million reads, were uniquely mapping per sample. Only uniquely mapping reads overlapping $\pm$500 of an annotated TES were quantified.
+
+\subsection{Normalizing read counts}
+
+Count data was normalized to counts per million using the same procedure as for the 50bp 3' tag-seq data in Chapter \ref{chpt:plasticity}. Normalizing one gene's expression in one sample is as follows:
+
+$$ gene_i \text{ (counts per million)} = \frac{\text{ reads mapped to } gene_i}{\text{library size}}*10^6 $$.
+
+\subsection{Differential expression in transcription factor deletion lines}
+
+To detect genes with differential expression in response to each transcription factor deletion, we estimated log2 fold change using DESeq2. We chose DESeq2 over the generalized linear models used in Chapter \ref{chpt:plasticity} because each transcription factor deletion only had two replicate samples. DESeq2 estimates expression variation across many genes thereby increasing power to detect DE genes when few replicate samples are available \cite{Love2014}. We generated separate DESeq data sets for each timepoint in each genetic background. Prior to model-fitting, we removed samples for any TF knockout that did not have at least two replicates (CBF1, GCN4 and YAP1 in Hyb, ZAP1 in Scer). For each TF knockout in each timepoint in each genetic background, we extracted from the DESeq2 model the p-value and estimated log2 fold change in expression when contrasting wildtype and TF knockout genotype.  We considered a gene to be significantly differentially expressed at a certain timepoint in a certain TF knockout line if its p-value was $\leq$0.05 (DESeq2 automatically applies false discovery correction) and magnitude of log2 effect size was $\geq$2. We repeated the DESeq2 model fitting two additional times with two ``sham'' datasets where the only difference from the real data is that expression counts for every TF knockout sample are sampled randomly from wildtype counts of the same genetic background at the same timepoint.
