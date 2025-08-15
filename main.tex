@@ -65,13 +65,13 @@
 \orcid{0000-0002-4629-4724}
 
 % Frontispiece
-\frontispiece{\includegraphics[width=4in]{front_materials/frontispiece.png}}
+%\frontispiece{\includegraphics[width=4in]{front_materials/frontispiece.png}}
 
 % Dedication
-\dedication{\input{front_materials/dedication}}
+%\dedication{\input{front_materials/dedication}}
 
 % Acknowledgments
-\acknowledgments{\input{front_materials/acknowledgments}}
+%\acknowledgments{\input{front_materials/acknowledgments}}
 
 % Preface
 %\preface{\input{front_materials/preface}}
@@ -105,6 +105,9 @@ Professor Jianzi Zhang
     \item [$\alpha$] The greek letter alpha.
     \item [$\Gamma$] \blindtext
 }
+
+% My attempt to add S in front of supplemental figure numbers
+\DeclareCaptionLabelFormat{withS}{#1 S#2}
 
 % Commands to hide or show lists of figures, tables, etc.
 % To hide a list, change the word "show" in the command to "hide".
@@ -140,7 +143,7 @@ Professor Jianzi Zhang
 
 % Appendices
 \appendix
-\input{appendices/appendix_NetworksGOtables}
+%\input{appendices/appendix_NetworksGOtables}
 \input{appendices/appendix_F2ChromMaps}
 
 \bibliographystyle{unsrt}

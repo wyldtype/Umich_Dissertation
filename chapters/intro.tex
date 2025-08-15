@@ -1,48 +1,23 @@
-\chapter{Introduction}
-\label{chpt:introduction}
+\chapter*{Introduction}
 
-It is a truth universally acknowledged that every single biology lab is in possession of a large transcriptomic dataset in want of analysis.
+%It is a truth universally acknowledged that every single biology lab is in possession of a large transcriptomic dataset in want of analysis.
 
-\section{Example Section}
-\label{sec:examplesec1}
+% mutations = discrete, pheno variation = continuous
+There is a discrepancy between the discrete units of change at the genetic level in the form of mutations and the continuous variation in traits observed between groups of related individuals or species. Rarely are visible phenotypic differences attributable to variants at single genetic loci. When differences cannot be associated with single genetic variants, or an additive combination of variants, we often lack frameworks for detecting them. One reason for lack of a framework is the large proportion of neutral genetic change that occurs over evolutionary time \cite{kimura1985neutral, Nei2010}. Genetic change can theoretically be truly neutral, in the form of DNA substitutions that do not affect any aspect of molecular phenotype or organismal phenotype. More often, genetic changes we consider to be neutral do have some influence on some aspect of molecular phenotype but do not propagate into detectable changes in organismal phenotype \cite{Boyle2017}. Because these changes do not influence fitness, as long as they do not create reproductive incompatibilities within a population, they accrue over evolutionary time.
 
-This dissertation template combines the work of our fore-academics to build a format that works for all of those who use \LaTeX \cite{jefferson2019policing}. We sincerely hope you find it useful \cite{shannon1948mathematical}.
+% Runaway bureaucracy
+Biological systems accommodate the potential for genetic changes to cause neutral changes to molecular phenotype at many levels \cite{Laruson2020}. Mutations can occur in non-coding DNA that is highly repetitive or heterochromic. Mutations can have phenotypic effects in certain environments but preserve the prior phenotype in environments where a certain response is under strong selection \cite{Paaby2014}. Mutations can occur in coding regions but change a codon to a synonymous amino acid. Mutations can cause a change to a protein that does affect its function or expression in a critical window but other proteins can compensate for this effect. There is often little adverse consequence for organisms when non-coding or coding sequence is duplicated, further elaborating biological systems and creating more potential for redundancy and compensation \cite{ohno1970duplication, Zhang2003, KellisM2004, DeSmet2012}.
 
-You can add acronyms in the text and front table! See the comments around the acronyms command for how to include them in the front table. The first time you use an acronym in the text, use the ``\textbackslash ac\{\}'' command like with this \ac{TLA} or \ac{SOA}. After you use them the first time, it'll just appear as the acronym (like this: \ac{TLA}).
+% Systems Drift: surprising degree to which this is happening
+It has long been understood that it was possible for these types of changes to occur over evolutionary time but unclear to what extent they were occurring. In the era of molecular biology it has become clear that they occur more frequently than previously expected. The term ``Developmental Systems Drift,'' or ``Systems Drift'' for non-developing organisms, was coined by True and Haag \cite{True2001} (and separately as ``Phenogenetic Drift'' by Weiss and Fullerton \cite{Weiss2000}) to draw attention to the phenomenon that a surprising amount of molecular change was occurring between closely related species. While ``surprising'' is a subjective term, it is used here to describe how expectations of the field were subverted. These expectations were established before the advent of molecular tools, based on observations and comparisons of organismal phenotypes. Many instances of Systems Drift have since been identified using molecular comparisons of closely related species. Systems Drift can be at the level of gene regulatory complexes, such as those used to express mating type genes in yeast \cite{Britton2020}. Systems Drift can also occur at the tissue level, such as changes to which embryonic cells contribute to vulval tissue development in nematodes \cite{Picao-Osorio2025}. 
 
-\blindtext
+% Systems Drift in all systems at once
+While there are many examples of Systems Drift in specific molecular pathways, there is less of an understanding of how prevalent it is across all molecular interactions underlying the phenotypes of related organisms. We understood that neutral genetic change was possible before we had the ability to measure how frequently neutral changes affected molecular systems. \emph{Much in the same way, we understand that these neutral changes are not relegated to single molecular systems, but we lack the conceptual framework for describing concurrent changes across multiple systems.} In this dissertation, I present a conceptual framework for describing these concurrent changes in molecular systems across all systems, measuring both divergence and conservation. I focus on one method of measuring the molecular phenotype, transcriptomic data, and one pair of species, the baker's yeast \textit{Saccharomyces cerevisiae} and one of its closest related species \textit{Saccharomyces paradoxus}.
 
+% Aligning the molecular phenotype
+My conceptual framework forms a middle ground between genomic sequence alignment and organismal phenotypic comparison. We understand how to capture both divergence and conservation concurrently when comparing a genomic sequence between species. We align sequences from the same genomic location and identify the locations where mismatched base pairs, insertions, or deletions occur. Sequence alignment methods have been highly refined and can be applied to compare sequences from virtually any group of organisms, provided there is enough homologous sequence to create a confident alignment. Distinguishing conserved and diverged genomic sequence, however, does not provide us with information on how those changes may affect the molecular or organismal phenotype. To compare organismal phenotypes, we typically choose a trait to measure between individuals or species (height, pigmentation pattern, enzymatic activity, etc.) and compare measurements of that trait. This method certainly informs us of phenotypic differences, but does not inform us to what genetic or molecular mechanisms might be causing trait differences. Further, by selecting a trait to measure beforehand we cannot place this divergence in the context of divergence occurring throughout the genome. I propose a middle ground between genomic alignments and phenotypic trait measurements, which I call ``aligning the molecular phenotype.'' 
 
-\section{Example Tables}
-\label{sec:examplesec2}
+Alignments require a common axis along which values from different individuals or species can be lined up next to each other and compared. In genomic alignments, this axis is always the same---the inferred homologous locations in the genome. When working with data measuring the molecular phenotype, such as the transcriptomic data I will analyze here, the axis along which to align is not clear. To address this uncertainty, I use the same technique we use to compare organismal phenotypes and select an axis of interest motivated by biological insights. In this manner, I combine the ability to distinguish conservation and divergence across the genome with insights into the molecular consequences of genomic divergence.
 
-You can make a table as follows \cite{ong1997gilbert}. Use can cross-reference items by doing things like Chapter \ref{chpt:introduction}.
+Each chapter of my dissertation selects a different axis along which the molecular phenotype is aligned. In Chapter \ref{chpt:plasticity}, I align the molecular phenotypes of \textit{Saccharomyces cerevisiae} and \textit{Saccharomyces paradoxus} by a set of environmental perturbations and measure how clusters of genes change expression in each species in response to the environmental change. In Chapter \ref{chpt:networks}, I align by a set of orthologous transcription factors that are deleted in both species and measure how each deletion affects each species' ability to respond to a signal of nitrogen depletion. In Chapter \ref{chpt:misexpression}, I align by a set of genes that are misexpressed in the F1 hybrid of \textit{Saccharomyces cerevisiae} and \textit{Saccharomyces paradoxus} and begin to measure how different combinations of parental alleles influences this misexpression in F2 hybrids. Finally I conclude by summarizing what each axis of alignment tells us about how molecular systems are diverging between these two species. I hope my methods may be useful to others facing the complicated problem of how to describe how genetic divergence accrued over evolutionary time influences all the molecular systems that comprise the organism.
 
-\blindtext
-
-\begin{table}[ht]
-    \begin{tabular}{l|l}
-        \textbf{left column} & \textbf{right column} \\ \hline
-        entry1 & entry2 \\
-        entry3 & entry4
-    \end{tabular}
-    \caption{An example table with things in it. See \url{https://www.latex-tables.com/} for a relatively-easy latex table generator. Other options include \url{https://truben.no/table/old/} and \url{https://www.tablesgenerator.com/}, but you'll find others online, too! Here, we're also showing that you can create URLs that link to external websites while still being underlined. You can use ``\textbackslash url\{\}'' for shorter URLs, but they will roll over the end of the line if they're too long. In that case, it's more accessible if you use ``\textbackslash href\{\textless url\textgreater\}\{\textless text\textgreater\}'' instead because it breaks at spaces in the text.}
-    \label{tab:my-table}
-\end{table}
-
-\blindtext
-
-
-\section{Example Figure}
-\label{sec:examplesec3}
-
-Check out Figure \ref{fig:the_big_house}. \blindtext
-
-\begin{figure}
-    \centering
-    \includegraphics{chapters/figures/the_big_house.jpeg}
-    \caption{The Big House, taken from Michigan Radio's article about it \cite{the_big_house}}
-    \label{fig:the_big_house}
-\end{figure}
-
-\blindtext[3]
